@@ -1,6 +1,16 @@
 NAME = libftprintf.a
 
-SOURCES = ft_printf.c
+LIBFT_DIR	= ./libft
+
+LIBFT		= ${LIBFT_DIR}/libft.a
+
+HEADER_DIR = ./header 
+
+INCLUDES = -I${HEADER_DIR} -I${LIBFT_DIR}
+
+SOURCE_DIR = ./src
+
+SOURCES = $(SOURCE_DIR)/ft_printf.c
 
 RM = @rm -f
 
@@ -18,21 +28,30 @@ MSG1 = @echo "Compiled ✔︎"
 MSG2 = @echo "Cleaned ✔︎"
 
 # Mandatory
-$(NAME): ${OBJECTS}
+all: ${NAME}
+
+# Mandatory
+$(NAME): ${OBJECTS} ${LIBFT}
 	${ARCHIVE} ${NAME} ${OBJECTS}
 	${RANLIB} ${NAME}
 	${MSG1}
 
-# Mandatory
-all: ${NAME}
+.c.o:
+	${CC} ${CFLAGS} ${INCLUDES} -c $< -o ${<:.c=.o}
+
+${LIBFT}:
+			make -C ${LIBFT_DIR}
+			cp ${LIBFT} ${NAME}
 
 # Mandatory
 clean: 
+	make clean -C ${LIBFT_DIR}
 	${RM}	${OBJECTS}
 	${MSG2}
 
 # Mandatory
 fclean: clean
+	make fclean -C ${LIBFT_DIR}
 	${RM} ${NAME}
 
 # Mandatory

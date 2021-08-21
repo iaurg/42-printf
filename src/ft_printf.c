@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 21:45:51 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/18 23:39:27 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/21 12:11:50 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,34 @@ int ft_printf(const char *)
 
 malloc, free, write, va_start, va_arg, va_copy, va_end
 */
-#include "ft_printf.h"
+#include "libftprintf.h"
 #include "stdio.h"
 
 // printf returns the number of characters passed to it
+
+/*
+Iterate over *type received printing char until found special characters "%", when find this flag. 
+Compare next character after "%"" with table "cspdiuxX%"
+Special characters needs to match exact same number of extra parameters.
+*/
+
 int ft_printf(const char *type, ...)
 {
-  va_list args;
 
-  va_start(args, type);
-  printf("%s\n", type);
-  for (int i = 0; i <= 1; i++)
+  if (!type)
+    return (0);  
+  va_list args;
+  va_start(args, type);  
+
+  while(*type)
   {
-    char *value = va_arg(args, char *);
-    printf("%d: %c\n",i, *value);
+    if(*type == '%')
+    {
+      printf("special character found\n");
+    }
+    ft_putchar_fd(*type, 1);
+    type++;
   }
-  va_end(args);
+  
   return(0);
 }
