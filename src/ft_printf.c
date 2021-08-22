@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 21:45:51 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/21 12:11:50 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/21 21:01:26 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 • You must use the command ar to create your librairy, using the command libtool
 is forbidden.
 
-%c print a single character.
-%s print a string of characters.
+%c print a single character. - OK
+%s print a string of characters. - OK
 %p The void * pointer argument is printed in hexadecimal.
 %d print a decimal (base 10) number.
 %i print an integer in base 10.
 %u print an unsigned decimal (base 10) number.
 %x print a number in hexadecimal (base 16).
-%% print a percent sign.
+%% print a percent sign. - OK
 
 for more complete references : man 3 printf / man 3 stdarg
 
@@ -40,28 +40,41 @@ malloc, free, write, va_start, va_arg, va_copy, va_end
 // printf returns the number of characters passed to it
 
 /*
-Iterate over *type received printing char until found special characters "%", when find this flag. 
+Iterate over *format received printing char until found special characters "%", when find this flag.
 Compare next character after "%"" with table "cspdiuxX%"
 Special characters needs to match exact same number of extra parameters.
 */
 
-int ft_printf(const char *type, ...)
+int	ft_navigate(const char *format, va_list ap)
 {
+	int len;
+	if (!format)
+		return (0);
 
-  if (!type)
-    return (0);  
-  va_list args;
-  va_start(args, type);  
+	len = 0;
+	while(*format)
+	{
+		if(*format == '%' && ft_strchr("cspdiuxX%", format[1]))
+			len += ft_parse_flag(++format, ap);
+		else
+		{
+			ft_putchar_fd(*format, 1);
+			len++;
+		}
+		format++;
+	}
+	return(len);
+}
 
-  while(*type)
-  {
-    if(*type == '%')
-    {
-      printf("special character found\n");
-    }
-    ft_putchar_fd(*type, 1);
-    type++;
-  }
-  
-  return(0);
+int	ft_printf(const char *format, ...)
+{
+	va_list list;
+	int len;
+
+	if (!format)
+		return (0);
+	va_start(list, format);
+	len = ft_navigate(format, list);
+	va_end(list);
+	return(len);
 }

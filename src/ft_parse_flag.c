@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_parse_flag.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/18 22:22:32 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/21 21:01:24 by itaureli         ###   ########.fr       */
+/*   Created: 2021/08/21 20:55:46 by itaureli          #+#    #+#             */
+/*   Updated: 2021/08/21 21:01:58 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
-# include "../libft/libft.h"
-int	ft_printf(const char *type, ...);
-int	ft_parse_flag(const char *format, va_list ap);
-int	ft_printf_c(int c);
-int ft_printf_s(char *s);
-int ft_printf_d(int number);
-#endif
+#include "libftprintf.h"
+
+int	ft_parse_flag(const char *format, va_list ap)
+{
+	int len;
+
+	len = 0;
+	if(*format == 'c')
+		len += ft_printf_c(va_arg(ap, int));
+	else if(*format == 's')
+		len += ft_printf_s(va_arg(ap, char *));
+	else if(*format == 'd')
+		len += ft_printf_d(va_arg(ap, int));
+	else if (*format == '%')
+		ft_putchar_fd('%', 1);
+	return(len);
+}

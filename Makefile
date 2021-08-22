@@ -4,13 +4,17 @@ LIBFT_DIR	= ./libft
 
 LIBFT		= ${LIBFT_DIR}/libft.a
 
-HEADER_DIR = ./header 
+HEADER_DIR = ./header
 
 INCLUDES = -I${HEADER_DIR} -I${LIBFT_DIR}
 
 SOURCE_DIR = ./src
 
 SOURCES = $(SOURCE_DIR)/ft_printf.c
+SOURCES += $(SOURCE_DIR)/ft_parse_flag.c
+SOURCES += $(SOURCE_DIR)/ft_printf_c.c
+SOURCES += $(SOURCE_DIR)/ft_printf_s.c
+SOURCES += $(SOURCE_DIR)/ft_printf_d.c
 
 RM = @rm -f
 
@@ -44,7 +48,7 @@ ${LIBFT}:
 			cp ${LIBFT} ${NAME}
 
 # Mandatory
-clean: 
+clean:
 	make clean -C ${LIBFT_DIR}
 	${RM}	${OBJECTS}
 	${MSG2}
