@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 21:45:51 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/21 23:11:12 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/22 15:53:29 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ is forbidden.
 
 %c print a single character. - OK
 %s print a string of characters. - OK
-%p The void * pointer argument is printed in hexadecimal.
+%p The void * pointer argument is printed in hexadecimal. - OK
 %d print a decimal (base 10) number. - OK
-%i print an integer in base 10.
+%i print an integer in base 10. - OK
 %u print an unsigned decimal (base 10) number.
 %x print a number in hexadecimal (base 16).
 %% print a percent sign. - OK
