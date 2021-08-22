@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_d.c                                      :+:      :+:    :+:   */
+/*   ft_printf_i.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 20:41:03 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/21 23:14:43 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/21 23:13:52 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-int ft_printf_d(int number)
+#include "stdio.h"
+int ft_printf_i(int number)
 {
 	char	*str;
 	int		len;

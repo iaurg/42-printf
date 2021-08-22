@@ -14,7 +14,9 @@ SOURCES = $(SOURCE_DIR)/ft_printf.c
 SOURCES += $(SOURCE_DIR)/ft_parse_flag.c
 SOURCES += $(SOURCE_DIR)/ft_printf_c.c
 SOURCES += $(SOURCE_DIR)/ft_printf_s.c
+SOURCES += $(SOURCE_DIR)/ft_printf_p.c
 SOURCES += $(SOURCE_DIR)/ft_printf_d.c
+SOURCES += $(SOURCE_DIR)/ft_printf_i.c
 
 RM = @rm -f
 

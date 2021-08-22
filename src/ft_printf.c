@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 21:45:51 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/21 21:01:26 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/21 23:11:12 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ is forbidden.
 %c print a single character. - OK
 %s print a string of characters. - OK
 %p The void * pointer argument is printed in hexadecimal.
-%d print a decimal (base 10) number.
+%d print a decimal (base 10) number. - OK
 %i print an integer in base 10.
 %u print an unsigned decimal (base 10) number.
 %x print a number in hexadecimal (base 16).
@@ -33,17 +33,15 @@ for more complete references : man 3 printf / man 3 stdarg
 int ft_printf(const char *)
 
 malloc, free, write, va_start, va_arg, va_copy, va_end
-*/
-#include "libftprintf.h"
-#include "stdio.h"
 
-// printf returns the number of characters passed to it
+printf returns the number of characters passed to it
 
-/*
 Iterate over *format received printing char until found special characters "%", when find this flag.
 Compare next character after "%"" with table "cspdiuxX%"
 Special characters needs to match exact same number of extra parameters.
 */
+
+#include "libftprintf.h"
 
 int	ft_navigate(const char *format, va_list ap)
 {
