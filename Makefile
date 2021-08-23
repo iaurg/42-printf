@@ -17,6 +17,7 @@ SOURCES += $(SOURCE_DIR)/ft_printf_s.c
 SOURCES += $(SOURCE_DIR)/ft_printf_p.c
 SOURCES += $(SOURCE_DIR)/ft_printf_d.c
 SOURCES += $(SOURCE_DIR)/ft_printf_i.c
+SOURCES += $(SOURCE_DIR)/ft_printf_u.c
 SOURCES += $(SOURCE_DIR)/ft_printf_x.c
 
 RM = @rm -f
