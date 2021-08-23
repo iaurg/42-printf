@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 22:22:32 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/21 23:03:12 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/22 22:17:29 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int	ft_printf_s(char *s);
 int	ft_printf_p(void *pointer);
 int	ft_printf_d(int number);
 int	ft_printf_i(int number);
+int	ft_printf_x(unsigned int number);
 #endif
