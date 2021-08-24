@@ -6,12 +6,12 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 22:22:32 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/23 21:23:58 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/23 22:53:48 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
 # include "../libft/libft.h"
