@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 22:43:49 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/23 21:18:37 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/23 21:43:16 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ int	ft_printf_u(unsigned int number)
 {
 	char	*str;
 	int		len;
+
 	if (number < 0)
 		number = -number;
 	str = ft_uitoa(number);
 	ft_putstr_fd(str, 1);
 	len = ft_strlen(str);
 	free(str);
-	return(len);
+	return (len);
 }

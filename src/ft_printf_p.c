@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:36:38 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/22 15:52:51 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/23 21:35:57 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ is the data type of the variable or constant that the pointer points to.
 
 static	size_t	hex_size(size_t number)
 {
-	size_t size;
+	size_t	size;
 
 	size = 0;
 	if (number == 0)
 		return (1);
-	while(number)
+	while (number)
 	{
 		number = number / 16;
 		size++;
 	}
-	return size;
+	return (size);
 }
 
 static char	*convert_to_hex(size_t number)
@@ -43,12 +43,12 @@ static char	*convert_to_hex(size_t number)
 
 	size = hex_size(number);
 	hex_table = malloc((size * sizeof(char)) + 2);
-	if(!hex_table)
+	if (!hex_table)
 		return (NULL);
 	iterator = size;
 	hex_table[0] = '0';
 	hex_table[1] = 'x';
-	while(iterator)
+	while (iterator)
 	{
 		remainder = number % 16;
 		if (remainder < 10)
@@ -57,7 +57,7 @@ static char	*convert_to_hex(size_t number)
 			hex_table[--iterator + 2] = 87 + remainder;
 		number = number / 16;
 	}
-	return(hex_table);
+	return (hex_table);
 }
 
 int	ft_printf_p(void *pointer)
@@ -71,5 +71,5 @@ int	ft_printf_p(void *pointer)
 	len = ft_strlen(hex);
 	ft_putstr_fd(hex, 1);
 	free(hex);
-	return(len);
+	return (len);
 }

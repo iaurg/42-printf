@@ -6,9 +6,45 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/18 21:45:51 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/22 22:40:43 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/23 21:41:53 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
+
+int	ft_navigate(const char *format, va_list ap)
+{
+	int	len;
+
+	if (!format)
+		return (0);
+	len = 0;
+	while (*format)
+	{
+		if (*format == '%' && ft_strchr("cspdiuxX%", format[1]))
+			len += ft_parse_flag(++format, ap);
+		else
+		{
+			ft_putchar_fd(*format, 1);
+			len++;
+		}
+		format++;
+	}
+	return (len);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list	list;
+	int		len;
+
+	if (!format)
+		return (0);
+	va_start(list, format);
+	len = ft_navigate(format, list);
+	va_end(list);
+	return (len);
+}
 
 /*
  The prototype of ft_printf should be int ft_printf(const char *, ...);
@@ -37,43 +73,8 @@ malloc, free, write, va_start, va_arg, va_copy, va_end
 
 printf returns the number of characters passed to it
 
-Iterate over *format received printing char until found special characters "%", when find this flag.
+Iterate over *format received printing char until found special characters "%",
+when find this flag.
 Compare next character after "%"" with table "cspdiuxX%"
 Special characters needs to match exact same number of extra parameters.
 */
-
-#include "libftprintf.h"
-
-int	ft_navigate(const char *format, va_list ap)
-{
-	int len;
-	if (!format)
-		return (0);
-
-	len = 0;
-	while(*format)
-	{
-		if(*format == '%' && ft_strchr("cspdiuxX%", format[1]))
-			len += ft_parse_flag(++format, ap);
-		else
-		{
-			ft_putchar_fd(*format, 1);
-			len++;
-		}
-		format++;
-	}
-	return(len);
-}
-
-int	ft_printf(const char *format, ...)
-{
-	va_list list;
-	int len;
-
-	if (!format)
-		return (0);
-	va_start(list, format);
-	len = ft_navigate(format, list);
-	va_end(list);
-	return(len);
-}
