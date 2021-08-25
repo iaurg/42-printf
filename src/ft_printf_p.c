@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:36:38 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/23 21:35:57 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/25 00:13:13 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static	size_t	hex_size(size_t number)
 	return (size);
 }
 
-static char	*convert_to_hex(size_t number)
+int	ft_printf_p(size_t number)
 {
 	int		iterator;
 	int		remainder;
@@ -42,9 +42,9 @@ static char	*convert_to_hex(size_t number)
 	size_t	size;
 
 	size = hex_size(number);
-	hex_table = malloc((size * sizeof(char)) + 2);
+	hex_table = malloc((size + 3) * sizeof(char));
 	if (!hex_table)
-		return (NULL);
+		return (0);
 	iterator = size;
 	hex_table[0] = '0';
 	hex_table[1] = 'x';
@@ -57,19 +57,7 @@ static char	*convert_to_hex(size_t number)
 			hex_table[--iterator + 2] = 87 + remainder;
 		number = number / 16;
 	}
-	return (hex_table);
-}
-
-int	ft_printf_p(void *pointer)
-{
-	int		len;
-	char	*hex;
-	size_t	decimal;
-
-	decimal = (size_t)pointer;
-	hex = convert_to_hex(decimal);
-	len = ft_strlen(hex);
-	ft_putstr_fd(hex, 1);
-	free(hex);
-	return (len);
+	write(1, hex_table, size + 2);
+	free(hex_table);
+	return (size + 2);
 }

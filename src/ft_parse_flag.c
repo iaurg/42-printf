@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 20:55:46 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/23 21:38:47 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/24 23:57:29 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_parse_flag(const char *format, va_list ap)
 	else if (*format == 's')
 		len += ft_printf_s(va_arg(ap, char *));
 	else if (*format == 'p')
-		len += ft_printf_p(va_arg(ap, void *));
+		len += ft_printf_p(va_arg(ap, size_t));
 	else if (*format == 'd')
 		len += ft_printf_d(va_arg(ap, int));
 	else if (*format == 'i')
