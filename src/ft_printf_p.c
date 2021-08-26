@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:36:38 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/25 22:01:18 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/26 08:25:32 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_printf_p(size_t number)
 	size_t	size;
 
 	size = hex_size(number);
-	hex_table = malloc((size + 3) * sizeof(char));
+	hex_table = malloc((size + 2) * sizeof(char));
 	if (!hex_table)
 		return (0);
 	iterator = size;
