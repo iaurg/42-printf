@@ -6,18 +6,11 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 22:36:38 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/25 21:38:23 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/25 22:01:18 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "stdio.h"
-/*
-The actual data type of the value of all pointers, whether integer, float,
-character, or otherwise, is the same, a long hexadecimal number that represents
-a memory address. The only difference between pointers of different data types
-is the data type of the variable or constant that the pointer points to.
-*/
 
 static	size_t	hex_size(size_t number)
 {

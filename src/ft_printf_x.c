@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 22:07:53 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/25 21:50:35 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/25 22:02:39 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ int	ft_printf_x(unsigned int number, char flag)
 			hex_table[--iterator] = 87 + remainder;
 		number = number / 16;
 	}
-
 	write(1, hex_table, size);
 	free(hex_table);
 	return (size);
