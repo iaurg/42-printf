@@ -6,7 +6,7 @@
 /*   By: itaureli <itaureli@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/22 22:07:53 by itaureli          #+#    #+#             */
-/*   Updated: 2021/08/23 21:42:38 by itaureli         ###   ########.fr       */
+/*   Updated: 2021/08/25 21:50:35 by itaureli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static	size_t	hex_size(unsigned int number)
 	return (size);
 }
 
-static char	*convert_to_hex(unsigned int number, char flag)
+int	ft_printf_x(unsigned int number, char flag)
 {
 	int		iterator;
 	int		remainder;
@@ -37,7 +37,7 @@ static char	*convert_to_hex(unsigned int number, char flag)
 	size = hex_size(number);
 	hex_table = malloc(size * sizeof(char));
 	if (!hex_table)
-		return (NULL);
+		return (0);
 	iterator = size;
 	while (iterator)
 	{
@@ -46,21 +46,12 @@ static char	*convert_to_hex(unsigned int number, char flag)
 			hex_table[--iterator] = 48 + remainder;
 		else if (flag == 'X')
 			hex_table[--iterator] = 55 + remainder;
-		else
+		else if (flag == 'x')
 			hex_table[--iterator] = 87 + remainder;
 		number = number / 16;
 	}
-	return (hex_table);
-}
 
-int	ft_printf_x(unsigned int number, char flag)
-{
-	int		len;
-	char	*hex;
-
-	hex = convert_to_hex(number, flag);
-	len = ft_strlen(hex);
-	ft_putstr_fd(hex, 1);
-	free(hex);
-	return (len);
+	write(1, hex_table, size);
+	free(hex_table);
+	return (size);
 }
