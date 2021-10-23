@@ -5,7 +5,7 @@ I think the most difficult part was new commands like va_*, variadic params and 
 
 **The logic is:**
 
-printf returns the number of characters passed to it
+printf returns the number of characters passed to it, like a strlen
 
 Iterate over *format received printing char until found special characters "%",
 when find this flag:
@@ -16,6 +16,8 @@ Special characters needs to match exact same number of extra parameters.
 
 **variadic arguments/variadic functions**
 variadic functions receive a ... parameter that can be any number of arguments. We need to use stdarg lib to read this type of arguments using va_start, va_arg, va_copy, va_end
+
+Made with PDF version 9
 
 ## Compile and test
 ```sh
